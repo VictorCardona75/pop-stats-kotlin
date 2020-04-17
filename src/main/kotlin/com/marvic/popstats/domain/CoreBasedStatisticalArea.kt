@@ -1,5 +1,7 @@
 package com.marvic.popstats.domain
 
+import org.springframework.data.mongodb.core.mapping.Document
+
 enum class StatisticalAreaType {
     METROPOLITAN, MICROPOLITAN
 }
@@ -13,6 +15,7 @@ enum class StatisticalAreaType {
  *
  * @constructor creates a new instance using the specified values
  */
+@Document(collection = "coreBasedStatisticalAreas")
 class CoreBasedStatisticalArea(
     _code: String,
     _title: String,

@@ -1,6 +1,9 @@
 package com.marvic.popstats.domain
 
+import org.springframework.data.mongodb.core.mapping.MongoId
+
 abstract class StatisticalReportingArea(
+    @MongoId
     val code: String,
     val title: String,
     val populationEstimates: List<PopulationEstimate>

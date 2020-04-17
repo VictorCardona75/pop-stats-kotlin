@@ -20,10 +20,10 @@ import java.time.LocalDate
 data class PopulationEstimate(
     val date: LocalDate,
     val value: Long,
-    val numericChangeFromLast: Long,
-    val fromCensus: Boolean,
-    val base: Boolean,
-    val naturalIncrease: NaturalIncrease?,
-    val netMigration: NetMigration?,
-    val residual: Residual?
+    val numericChangeFromLast: Long = 0,
+    val fromCensus: Boolean = false,
+    val base: Boolean = false,
+    val naturalIncrease: NaturalIncrease? = null,
+    val netMigration: NetMigration? = null,
+    val residual: Residual? = null
 )
