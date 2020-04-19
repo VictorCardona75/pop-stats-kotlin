@@ -17,11 +17,11 @@ enum class CountyType {
  * @property countyType whether the county is central or outlying
  */
 class CountyOrEquivalent(
-    _code: String,
-    _title: String,
-    _populationEstimates: List<PopulationEstimate>,
+    code: String,
+    title: String,
+    populationEstimates: List<PopulationEstimate>,
     val countyType: CountyType
-) : StatisticalReportingArea(_code, _title, _populationEstimates) {
+) : StatisticalReportingArea(code, title, populationEstimates) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

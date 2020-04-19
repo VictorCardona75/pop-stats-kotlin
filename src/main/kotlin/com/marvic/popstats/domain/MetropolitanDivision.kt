@@ -15,11 +15,11 @@ package com.marvic.popstats.domain
  * @property counties the counties that make up this division
  */
 class MetropolitanDivision(
-    _code: String,
-    _title: String,
-    _populationEstimates: List<PopulationEstimate>,
+    code: String,
+    title: String,
+    populationEstimates: List<PopulationEstimate>,
     val counties: List<CountyOrEquivalent>
-) : StatisticalReportingArea(_code, _title, _populationEstimates) {
+) : StatisticalReportingArea(code, title, populationEstimates) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

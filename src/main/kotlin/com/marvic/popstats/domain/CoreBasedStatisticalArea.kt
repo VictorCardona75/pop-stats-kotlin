@@ -1,6 +1,7 @@
 package com.marvic.popstats.domain
 
 import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.MongoId
 
 enum class StatisticalAreaType {
     METROPOLITAN, MICROPOLITAN
@@ -17,13 +18,13 @@ enum class StatisticalAreaType {
  */
 @Document(collection = "coreBasedStatisticalAreas")
 class CoreBasedStatisticalArea(
-    _code: String,
-    _title: String,
-    _populationEstimates: List<PopulationEstimate>,
+    code: String,
+    title: String,
+    populationEstimates: List<PopulationEstimate>,
     val areaType: StatisticalAreaType,
     val divisions: List<MetropolitanDivision> = listOf(),
     val counties: List<CountyOrEquivalent> = listOf()
-) : StatisticalReportingArea(_code, _title, _populationEstimates) {
+) : StatisticalReportingArea(code, title, populationEstimates) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

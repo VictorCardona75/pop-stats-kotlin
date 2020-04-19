@@ -9,6 +9,8 @@ plugins {
     id("org.jetbrains.dokka") version "0.10.1"
 }
 
+ext["groovy.version"] = "3.0.2"
+
 group = "com.marvic"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -40,6 +42,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+    testImplementation("io.rest-assured:rest-assured:4.3.0")
+    testImplementation("io.rest-assured:json-path:4.3.0")
+    testImplementation("io.rest-assured:xml-path:4.3.0")
+    testImplementation("io.rest-assured:kotlin-extensions:4.3.0")
 }
 
 tasks.withType<Test> {
