@@ -46,6 +46,7 @@ dependencies {
     testImplementation("io.rest-assured:json-path:4.3.0")
     testImplementation("io.rest-assured:xml-path:4.3.0")
     testImplementation("io.rest-assured:kotlin-extensions:4.3.0")
+    testImplementation("io.mockk:mockk:1.10.0")
 }
 
 tasks.withType<Test> {
