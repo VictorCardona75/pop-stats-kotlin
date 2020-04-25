@@ -2,10 +2,10 @@ package com.marvic.popstats.service
 
 import com.marvic.popstats.data.CoreBasedStatisticalAreaRepository
 import com.marvic.popstats.domain.CoreBasedStatisticalArea
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -24,7 +24,7 @@ internal class CoreBasedStatisticalAreaServiceTest {
 
         val result: CoreBasedStatisticalArea? = classUnderTest.findByCode(input)
 
-        assertThat(result).isEqualTo(expectedResult)
+        result.shouldBeSameInstanceAs(expectedResult)
     }
 
     @Test
@@ -34,7 +34,7 @@ internal class CoreBasedStatisticalAreaServiceTest {
 
         val result = classUnderTest.findAll()
 
-        assertThat(result).isEqualTo(expectedResult)
+        result.shouldBeSameInstanceAs(expectedResult)
     }
 
     @Test
@@ -46,6 +46,6 @@ internal class CoreBasedStatisticalAreaServiceTest {
 
         val result = classUnderTest.findAllBy(codeList, titleList)
 
-        assertThat(result).isEqualTo(expectedResult)
+        result.shouldBeSameInstanceAs(expectedResult)
     }
 }

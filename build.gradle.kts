@@ -47,6 +47,7 @@ dependencies {
     testImplementation("io.rest-assured:xml-path:4.3.0")
     testImplementation("io.rest-assured:kotlin-extensions:4.3.0")
     testImplementation("io.mockk:mockk:1.10.0")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:4.0.4")
 }
 
 tasks.withType<Test> {
@@ -61,7 +62,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks {
-    val dokka by getting(DokkaTask::class) {
+    getting(DokkaTask::class) {
         outputFormat = "gfm"
         outputDirectory = "$buildDir/dokka"
     }
