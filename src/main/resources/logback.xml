@@ -9,6 +9,7 @@
     </appender>
 
     <logger name="org.springframework.data.mongodb.repository.query" level="debug" />
+    <logger name="com.marvic.popstats.data" level="debug" />
 
     <root level="info">
         <appender-ref ref="Console" />

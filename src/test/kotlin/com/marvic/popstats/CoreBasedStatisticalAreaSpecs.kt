@@ -1,5 +1,6 @@
 package com.marvic.popstats
 
+import com.marvic.popstats.domain.StatisticalAreaType
 import io.restassured.RestAssured
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
@@ -23,7 +24,7 @@ class CoreBasedStatisticalAreaSpecs(@LocalServerPort val port: Int) {
     @Nested
     inner class `All core based statistical areas` {
         @Test
-        fun `are returned if no titles or codes are provided`() {
+        fun `are returned if no filters are specified`() {
             Given {
                 log().params()
             } When {
@@ -39,7 +40,7 @@ class CoreBasedStatisticalAreaSpecs(@LocalServerPort val port: Int) {
     @Nested
     inner class `Requested core based statistical areas` {
         @Test
-        fun `are returned if one code is provided`() {
+        fun `are returned if one code is specified`() {
             Given {
                 log().params()
                 queryParam("code", "42660")
@@ -53,7 +54,7 @@ class CoreBasedStatisticalAreaSpecs(@LocalServerPort val port: Int) {
         }
 
         @Test
-        fun `are returned if several codes are provided`() {
+        fun `are returned if several codes are specified`() {
             Given {
                 log().params()
                 queryParam("code", "41180", "42660")
@@ -67,7 +68,7 @@ class CoreBasedStatisticalAreaSpecs(@LocalServerPort val port: Int) {
         }
 
         @Test
-        fun `are returned if one title is provided`() {
+        fun `are returned if one title is specified`() {
             Given {
                 log().params()
                 queryParam("title", "St. Louis, MO-IL")
@@ -81,7 +82,7 @@ class CoreBasedStatisticalAreaSpecs(@LocalServerPort val port: Int) {
         }
 
         @Test
-        fun `are returned if several titles are provided`() {
+        fun `are returned if several titles are specified`() {
             Given {
                 log().params()
                 queryParam("title", "St. Louis, MO-IL", "Seattle-Tacoma-Bellevue, WA")
@@ -95,17 +96,16 @@ class CoreBasedStatisticalAreaSpecs(@LocalServerPort val port: Int) {
         }
 
         @Test
-        fun `are returned if several codes and titles are provided`() {
+        fun `are returned if an area type is specified`() {
             Given {
                 log().params()
-                queryParam("code", "41180", "42660")
-                queryParam("title", "Abilene, TX", "Albuquerque, NM")
+                queryParam("type", StatisticalAreaType.METROPOLITAN.toString())
             } When {
                 get()
             } Then {
                 log().ifError()
                 statusCode(HttpStatus.OK.value())
-                body("itemsIncluded", equalTo(4))
+                body("itemsIncluded", equalTo(384))
             }
         }
     }
